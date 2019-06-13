@@ -4,8 +4,6 @@ import router from './router'
 import store from './store'
 import './currency-filter'
 
-export const eventBus = new Vue()
-
 Vue.config.productionTip = false
 
 new Vue({
