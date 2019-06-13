@@ -26,6 +26,13 @@ export default new Vuex.Store({
           quantity: cartItem.quantity
         }
       })
+    },
+    cartTotal (state) {
+      let sum = 0
+      state.cart.forEach(cartItem => {
+        sum += cartItem.price * cartItem.quantity
+      })
+      return sum
     }
   },
   actions: {
@@ -41,7 +48,7 @@ export default new Vuex.Store({
       if (product.inventory > 0) {
         let cartItem = context.state.cart.find(item => item.id === product.id)
         if (!cartItem) {
-          context.commit('pushProductToCart', product.id)
+          context.commit('pushProductToCart', product)
         } else {
           context.commit('incrementProductCount', cartItem)
         }
@@ -53,10 +60,11 @@ export default new Vuex.Store({
     setProducts (state, products) {
       state.products = products
     },
-    pushProductToCart (state, productId) {
+    pushProductToCart (state, product) {
       state.cart.push({
-        id: productId,
-        quantity: 1
+        id: product.id,
+        quantity: 1,
+        price: product.price
       })
     },
     incrementProductCount (state, cartItem) {
