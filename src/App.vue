@@ -1,35 +1,27 @@
 <template>
   <div id="app">
     <product-list></product-list>
+    <hr>
+    <shopping-cart></shopping-cart>
   </div>
 </template>
 
 <script>
 import ProductList from './components/ProductList.vue'
+import ShoppingCart from './components/ShoppingCart.vue'
 export default {
   components: {
-    ProductList
+    ProductList,
+    ShoppingCart
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #app {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  }
+  ul {
+    list-style: none
+  }
 </style>
