@@ -6,9 +6,11 @@
     </div>
     <div v-else>
       <ul>
-        <li v-for="product in products" :key="product.id">
+        <li v-for="product in allItems" :key="product.id">
           {{ product.title }} - {{ product.price | currency }} - {{ product.inventory }}
-          <button @click="addProductToCart(product)">Add To Cart</button>
+          <button @click="addProductToCart(product)" :disabled="!product.inventory > 0">
+            Add To Cart
+          </button>
         </li>
       </ul>
     </div>
@@ -26,7 +28,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      products: 'availableProducts'
+      availableProducts: 'availableProducts',
+      allItems: 'allItems'
     })
   },
   methods: {
